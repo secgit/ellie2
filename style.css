@@ -12,8 +12,9 @@ h1 {
 }
 
 #animal-name {
-    font-size: 4em;
-    color: #ff69b4;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 6em;
+    color: #000000;
     margin-bottom: 20px;
 }
 
