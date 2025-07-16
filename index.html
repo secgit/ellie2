@@ -2,12 +2,20 @@
 <html>
 <head>
     <title>Animal Matching Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <h1>Find the Animal!</h1>
     <div id="game-info">
-        <div id="timer">Time: 30</div>
+        <div id="timer">
+            <div class="timer-circle">
+                <div class="timer-inner"></div>
+            </div>
+            <div id="timer-text">30</div>
+        </div>
         <div id="score">Score: 0</div>
     </div>
     <h2 id="animal-name"></h2>
