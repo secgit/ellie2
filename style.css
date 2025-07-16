@@ -1,0 +1,204 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    text-align: center;
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+h1 {
+    font-size: 3em;
+    color: #ff69b4;
+    text-shadow: 2px 2px 4px #aaa;
+}
+
+#animal-name {
+    font-size: 4em;
+    color: #ff69b4;
+    margin-bottom: 20px;
+}
+
+#game-info {
+    display: flex;
+    justify-content: space-around;
+    font-size: 2em;
+    color: #ff69b4;
+    margin-bottom: 20px;
+}
+
+#image-container {
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-items: center;
+    max-width: 800px;
+}
+
+.image-wrapper {
+    position: relative;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    border: 10px solid #ffb6c1;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 5px 5px 10px #888;
+}
+
+img:hover {
+    transform: scale(1.1);
+    border-color: #ff69b4;
+}
+
+.correct img {
+    border-color: #32cd32;
+    animation: pulse 0.5s;
+}
+
+.incorrect img {
+    border-color: #ff0000;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.sparkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ffc700;
+    border-radius: 50%;
+    animation: sparkle-animation 1s forwards;
+}
+
+@keyframes sparkle-animation {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) translate(var(--x), var(--y));
+        opacity: 0;
+    }
+}
+
+#game-over-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#game-over-box {
+    background-color: #f0f8ff;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    color: #333;
+    border: 10px solid #ff69b4;
+}
+
+#game-over-box h2 {
+    font-size: 3em;
+    color: #ff69b4;
+    margin-bottom: 20px;
+}
+
+#game-over-box p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+#play-again-btn {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 1.5em;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 5px solid #ffb6c1;
+    background-color: #ff69b4;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+#play-again-btn:hover {
+    transform: scale(1.1);
+    border-color: #ff69b4;
+    background-color: #ffb6c1;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    #animal-name {
+        font-size: 3em;
+    }
+
+    #game-info {
+        font-size: 1.5em;
+    }
+
+    #image-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        max-width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+        border-width: 5px;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    #animal-name {
+        font-size: 2em;
+    }
+
+    #game-info {
+        font-size: 1.2em;
+    }
+
+    #image-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+    }
+
+    img {
+        width: 80px;
+        height: 80px;
+    }
+}
