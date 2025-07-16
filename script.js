@@ -69,6 +69,13 @@ const gameOverOverlay = document.getElementById('game-over-overlay');
 const finalScoreElement = document.getElementById('final-score');
 const playAgainBtn = document.getElementById('play-again-btn');
 
+function preloadImages() {
+    animals.forEach(animal => {
+        const img = new Image();
+        img.src = animal.image;
+    });
+}
+
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -136,23 +143,25 @@ function handleImageClick(event) {
     if (isGameOver) return;
 
     const clickedImage = event.target;
-    const wrapper = clickedImage.parentElement;
     const clickedAnimalName = clickedImage.dataset.name;
 
     if (clickedAnimalName === currentAnimal.name) {
         // Correct
         score++;
         scoreElement.textContent = `Score: ${score}`;
-        wrapper.classList.add('correct');
-        createSparkles(wrapper);
+        animalNameElement.textContent = "Correct!";
+        animalNameElement.classList.add('text-correct');
+
         setTimeout(() => {
+            animalNameElement.classList.remove('text-correct');
             nextRound();
-        }, 1000);
+        }, 500);
+
     } else {
         // Incorrect
-        wrapper.classList.add('incorrect');
+        animalNameElement.classList.add('text-incorrect');
         setTimeout(() => {
-            wrapper.classList.remove('incorrect');
+            animalNameElement.classList.remove('text-incorrect');
         }, 500);
     }
 }
@@ -174,4 +183,5 @@ playAgainBtn.addEventListener('click', () => {
     startGame();
 });
 
+preloadImages();
 startGame();

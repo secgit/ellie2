@@ -53,15 +53,16 @@ img:hover {
     border-color: #ff69b4;
 }
 
-.correct img {
-    border-color: #32cd32;
-    animation: pulse 0.5s;
-}
-
-.incorrect img {
-    border-color: #ff0000;
+.text-correct {
+    color: #32cd32 !important;
     animation: shake 0.5s;
 }
+
+.text-incorrect {
+    color: #ff0000 !important;
+    animation: shake 0.5s;
+}
+
 
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
