@@ -96,14 +96,21 @@ function endGame() {
     gameOverOverlay.style.display = 'flex';
 }
 
+function isMobile() {
+    return window.innerWidth <= 480;
+}
+
 function nextRound() {
     // Get a random animal
     currentAnimal = animals[Math.floor(Math.random() * animals.length)];
     animalNameElement.textContent = currentAnimal.name;
 
-    // Get 15 other random animals
+    // Determine number of other animals based on screen size
+    const numOtherAnimals = isMobile() ? 3 : 15;
+    
+    // Get random other animals
     const otherAnimals = animals.filter(animal => animal.name !== currentAnimal.name);
-    const randomAnimals = shuffle(otherAnimals).slice(0, 15);
+    const randomAnimals = shuffle(otherAnimals).slice(0, numOtherAnimals);
 
     // Add the correct animal and shuffle
     const displayAnimals = shuffle([...randomAnimals, currentAnimal]);
@@ -166,6 +173,14 @@ function createSparkles(wrapper) {
 
 playAgainBtn.addEventListener('click', () => {
     startGame();
+});
+
+// Handle window resize to update layout
+window.addEventListener('resize', () => {
+    // Only update if we're not in game over state
+    if (!isGameOver) {
+        nextRound();
+    }
 });
 
 preloadImages();

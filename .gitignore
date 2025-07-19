@@ -1,3 +1,4 @@
 .venv/*
 prompts.txt
 GEMINI.md
+settings.local.json
