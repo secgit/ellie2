@@ -99,11 +99,19 @@ function endGame() {
 function isMobile() {
     // Detect phones specifically (not tablets)
     const userAgent = navigator.userAgent.toLowerCase();
+    
+    // Standard mobile detection
     const isPhone = /android.*mobile|iphone|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+    
+    // Firefox mobile detection (covers Android and other mobile Firefox)
+    const isFirefoxMobile = /mobile.*firefox|firefox.*mobile/i.test(userAgent);
+    
+    // Screen size detection
     const isSmallScreen = window.matchMedia('(max-width: 480px)').matches;
     const isTouchAndSmall = 'ontouchstart' in window && window.innerWidth <= 600;
     
-    return isPhone || isSmallScreen || isTouchAndSmall;
+    // Comprehensive mobile check
+    return isPhone || isFirefoxMobile || isSmallScreen || isTouchAndSmall;
 }
 
 function nextRound() {
@@ -116,9 +124,21 @@ function nextRound() {
     const numOtherAnimals = mobileDetected ? 3 : 15;
     
     // Debug info - remove after testing
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isPhone = /android.*mobile|iphone|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+    const isFirefoxMobile = /mobile.*firefox|firefox.*mobile/i.test(userAgent) && /android/i.test(userAgent);
+    const isSmallScreen = window.matchMedia('(max-width: 480px)').matches;
+    const isTouchAndSmall = 'ontouchstart' in window && window.innerWidth <= 600;
+    
+    console.log('=== MOBILE DETECTION DEBUG ===');
     console.log('Mobile detected:', mobileDetected, 'Images to show:', numOtherAnimals + 1);
     console.log('User agent:', navigator.userAgent);
     console.log('Window width:', window.innerWidth);
+    console.log('isPhone:', isPhone);
+    console.log('isFirefoxMobile:', isFirefoxMobile);
+    console.log('isSmallScreen:', isSmallScreen);
+    console.log('isTouchAndSmall:', isTouchAndSmall);
+    console.log('================================');
     
     // Get random other animals
     const otherAnimals = animals.filter(animal => animal.name !== currentAnimal.name);
