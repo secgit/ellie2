@@ -57,14 +57,10 @@ const animals = [
 
 let currentAnimal;
 let score = 0;
-let timer;
-let timeLeft = 30;
 let isGameOver = false;
 
 const animalNameElement = document.getElementById('animal-name');
 const imageContainer = document.getElementById('image-container');
-const timerElement = document.querySelector('.timer-circle');
-const timerTextElement = document.getElementById('timer-text');
 const scoreElement = document.getElementById('score');
 const gameOverOverlay = document.getElementById('game-over-overlay');
 const finalScoreElement = document.getElementById('final-score');
@@ -88,30 +84,9 @@ function shuffle(array) {
 function startGame() {
     gameOverOverlay.style.display = 'none';
     score = 0;
-    timeLeft = 30;
     isGameOver = false;
     scoreElement.textContent = `Score: ${score}`;
-    timerTextElement.textContent = timeLeft;
-    timerElement.style.background = `conic-gradient(#32cd32 360deg, #ddd 0deg)`;
-    timerElement.classList.remove('pulsing');
     
-    clearInterval(timer);
-    timer = setInterval(() => {
-        timeLeft--;
-        const angle = (timeLeft / 30) * 360;
-        timerElement.style.background = `conic-gradient(#32cd32 ${angle}deg, #ddd ${angle}deg)`;
-        timerTextElement.textContent = timeLeft;
-
-        if (timeLeft <= 10) {
-            timerElement.classList.add('pulsing');
-        }
-
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            endGame();
-        }
-    }, 1000);
-
     nextRound();
 }
 
