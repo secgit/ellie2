@@ -97,7 +97,13 @@ function endGame() {
 }
 
 function isMobile() {
-    return window.innerWidth <= 480;
+    // Detect phones specifically (not tablets)
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isPhone = /android.*mobile|iphone|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+    const isSmallScreen = window.matchMedia('(max-width: 480px)').matches;
+    const isTouchAndSmall = 'ontouchstart' in window && window.innerWidth <= 600;
+    
+    return isPhone || isSmallScreen || isTouchAndSmall;
 }
 
 function nextRound() {
@@ -106,7 +112,13 @@ function nextRound() {
     animalNameElement.textContent = currentAnimal.name;
 
     // Determine number of other animals based on screen size
-    const numOtherAnimals = isMobile() ? 3 : 15;
+    const mobileDetected = isMobile();
+    const numOtherAnimals = mobileDetected ? 3 : 15;
+    
+    // Debug info - remove after testing
+    console.log('Mobile detected:', mobileDetected, 'Images to show:', numOtherAnimals + 1);
+    console.log('User agent:', navigator.userAgent);
+    console.log('Window width:', window.innerWidth);
     
     // Get random other animals
     const otherAnimals = animals.filter(animal => animal.name !== currentAnimal.name);
