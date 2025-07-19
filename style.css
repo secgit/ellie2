@@ -50,6 +50,7 @@ img {
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     box-shadow: 5px 5px 10px #888;
+    touch-action: manipulation;
 }
 
 img:hover {
@@ -158,27 +159,30 @@ img:hover {
 @media (max-width: 768px) {
     body {
         margin: 0;
+        padding: 10px;
     }
 
     h1 {
-        font-size: 2em;
+        font-size: 3em;
         margin-top: 10px;
+        margin-bottom: 20px;
     }
 
     #animal-name {
-        font-size: 3em;
-        margin-bottom: 10px;
+        font-size: 4em;
+        margin-bottom: 20px;
+        line-height: 1.1;
     }
 
     #game-info {
-        font-size: 1.5em;
-        margin-bottom: 10px;
+        font-size: 2.5em;
+        margin-bottom: 20px;
     }
 
     #image-container {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 5px;
-        padding: 5px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        padding: 10px;
         box-sizing: border-box;
         max-width: 100vw;
     }
@@ -187,31 +191,72 @@ img:hover {
         width: 100%;
         height: auto;
         aspect-ratio: 1 / 1;
-        border-width: 5px;
-        border-radius: 10px;
+        border-width: 6px;
+        border-radius: 15px;
+    }
+
+    #game-over-box {
+        padding: 30px;
+        margin: 20px;
+    }
+
+    #game-over-box h2 {
+        font-size: 3.5em;
+    }
+
+    #game-over-box p {
+        font-size: 2em;
+    }
+
+    #play-again-btn {
+        font-size: 2em;
+        padding: 15px 30px;
     }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.8em;
+        font-size: 2.5em;
+        margin-bottom: 15px;
     }
 
     #animal-name {
-        font-size: 2.5em;
+        font-size: 3.5em;
+        margin-bottom: 15px;
+        padding: 0 10px;
     }
 
     #game-info {
-        font-size: 1.2em;
+        font-size: 2.2em;
+        margin-bottom: 15px;
     }
 
     #image-container {
-        gap: 5px;
-        padding: 5px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 15px;
     }
 
     img {
-        border-width: 3px;
-        border-radius: 8px;
+        border-width: 5px;
+        border-radius: 12px;
+    }
+
+    #game-over-box {
+        padding: 25px;
+        margin: 15px;
+    }
+
+    #game-over-box h2 {
+        font-size: 3em;
+    }
+
+    #game-over-box p {
+        font-size: 1.8em;
+    }
+
+    #play-again-btn {
+        font-size: 1.8em;
+        padding: 12px 25px;
     }
 }
